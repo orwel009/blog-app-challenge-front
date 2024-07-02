@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './LoginRegister.css'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 
 const LoginRegister = () => {
+
+    const[action, setAction] = useState('')
+
+    const registerLink = ()=>{
+        setAction(' active')
+    }
+    const loginLink = ()=>{
+        setAction('')
+    }
+
+
   return (
-    <div className='wrapper'>
+    <div className={`wrapper${action}`}>
         <div className="form-box login">
             <form action="">
                 <h1>Login</h1>
@@ -21,11 +32,11 @@ const LoginRegister = () => {
                         <input type="checkbox" />
                         Remember me
                     </label>
-                    <a href="#">Forgot Password?</a>
+                    <a href="/forgot">Forgot Password?</a>
                 </div>
                 <button type='submit'>Login</button>
                 <div className="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
+                    <p>Don't have an account? <a onClick={registerLink}>Register</a></p>
                 </div>
             </form>
         </div>
@@ -53,7 +64,7 @@ const LoginRegister = () => {
                 </div>
                 <button type='submit'>Register</button>
                 <div className="register-link">
-                    <p>Already have an account? <a href="#">Login</a></p>
+                    <p>Already have an account? <a onClick={loginLink}>Login</a></p>
                 </div>
             </form>
         </div>
