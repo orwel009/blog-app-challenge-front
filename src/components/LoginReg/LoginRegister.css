@@ -103,12 +103,12 @@ body {
     margin-right: 4px;
   }
 
-  .remember-forgot a {
+  .remember-forgot .link-tag {
     color: #fff;
     text-decoration: none;
   }
 
-  .remember-forgot a:hover {
+  .remember-forgot .link-tag:hover {
     text-decoration: underline;
   }
 
@@ -132,12 +132,12 @@ body {
     margin: 20px 0 15px;
   }
 
-  .register-link p a {
+  .register-link p .link-tag {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
   }
 
-  .register-link p a:hover {
+  .register-link p .link-tag:hover {
     text-decoration: underline;
   }
