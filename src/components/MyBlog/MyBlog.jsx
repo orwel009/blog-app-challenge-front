@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import './ViewBlog.css'
+import Navbar from '../Navbar'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import Navbar from '../Navbar'
 
-const ViewBlogs = () => {
+const MyBlog = () => {
     const [blog,changeBlog] = useState([])
     const navigate = useNavigate()
 
     const fetchData = ()=>{
         const token = sessionStorage.getItem('token')
         // console.log(token)
-        axios.post("http://localhost:8080/viewBlog",
+        axios.post("http://localhost:8080/viewMyBlog",
             {},
             {
                 headers: {
@@ -36,6 +35,7 @@ const ViewBlogs = () => {
     }
 
     useEffect(()=>{fetchData()},[])
+
   return (
     <div>
         <Navbar/>
@@ -43,6 +43,7 @@ const ViewBlogs = () => {
             <div className="row">
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <div className="row g-3">
+                    <Link to='/add-blog' className="btn btn-dark">Add New Blog</Link>
                         {blog.map(
                             (value,index) => {
                                 return  <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -52,8 +53,12 @@ const ViewBlogs = () => {
                                                 <h5 className="card-title">{value.title}</h5>
                                                 <p className="card-text">{value.content}</p>
                                                 <p className="card-text">{value.author}</p>
-                                                <p className="card-text">Posted on {value.date}</p>
-                                                <Link to='' className="btn btn-primary">Read More</Link>
+                                                <div className="btn-group" role="group" aria-label="Default button group">
+                                                    <Link to='' className="btn btn-outline-primary">Read More</Link>
+                                                    <button type="button" className="btn btn-outline-warning">Edit</button>
+                                                    <button type="button" className="btn btn-outline-danger">Delete</button>
+                                                </div>
+                                                
                                             </div>
                                             </div>
                                     </div>
@@ -68,4 +73,4 @@ const ViewBlogs = () => {
   )
 }
 
-export default ViewBlogs
+export default MyBlog

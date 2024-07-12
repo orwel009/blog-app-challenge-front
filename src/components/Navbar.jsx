@@ -15,15 +15,8 @@ const Navbar = () => {
                             <li class="nav-item">
                                 <Link class="nav-link active" aria-current="page" to="/home">Home</Link>
                             </li>
-                            <li class="nav-item dropdown">
-                                <Link class="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Blog Operations
-                                </Link>
-                                <ul class="dropdown-menu">
-                                    <li><Link class="dropdown-item" to="/addBlog">Add Blog</Link></li>
-                                    <li><Link class="dropdown-item" to="/editBlog">Edit Blog</Link></li>
-                                    <li><Link class="dropdown-item" to="/deleteBlog">Delete Blog</Link></li>
-                                </ul>
+                            <li class="nav-item">
+                                <Link class="nav-link active" aria-current="page" to="/my-blog">My Blogs</Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link" to="/logout">Logout</Link>
