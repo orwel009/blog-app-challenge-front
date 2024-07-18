@@ -5,6 +5,7 @@ import ViewBlogs from './components/ViewBlog/ViewBlogs';
 import Logout from './components/LoginReg/Logout';
 import MyBlog from './components/MyBlog/MyBlog';
 import AddBlog from './components/MyBlog/AddBlog';
+import EditBlog from './components/MyBlog/EditBlog';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/home' element={<ViewBlogs/>}/>
         <Route path='/my-blog' element={<MyBlog/>}/>
         <Route path='/add-blog' element={<AddBlog/>}/>
+        <Route path='/edit-blog/:id' element={<EditBlog/>}/>
         <Route path='/logout' element={<Logout/>}/>
       </Routes>
     </BrowserRouter>

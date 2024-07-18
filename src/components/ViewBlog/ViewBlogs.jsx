@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ViewBlog.css'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../Navbar'
 import { format } from 'date-fns';
 
@@ -9,12 +9,16 @@ import { format } from 'date-fns';
 const ViewBlogs = () => {
     const [blog, changeBlog] = useState([])
     const navigate = useNavigate()
-
+    const useQuery = () => {
+        return new URLSearchParams(useLocation().search)
+    }
+    const query = useQuery();
+    const searchTerm = query.get('search') || '';
     const fetchData = () => {
         const token = sessionStorage.getItem('token')
         // console.log(token)
         axios.post("http://localhost:8080/viewBlog",
-            {},
+            {searchQuery: searchTerm },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +41,7 @@ const ViewBlogs = () => {
         )
     }
 
-    useEffect(() => { fetchData() }, [])
+    useEffect(() => { fetchData(searchTerm) }, [searchTerm])
 
     const formatDate = (date) => {
         const now = new Date();

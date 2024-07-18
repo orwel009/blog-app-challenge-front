@@ -123,7 +123,7 @@ const MyBlog = () => {
                                                 <p className="card-text">{formatDate(value.date)}</p>
                                                 <div className="btn-group" role="group" aria-label="Default button group">
                                                     <Link to='' className="btn btn-outline-primary">Read More</Link>
-                                                    <button type="button" className="btn btn-outline-warning">Edit</button>
+                                                    <Link to={`/edit-blog/${value._id}`} className="btn btn-outline-warning">Edit</Link>
                                                     <button type="button" className="btn btn-outline-danger" onClick={() => deleteBlog(value._id)}>Delete</button>
                                                 </div>
                                                 

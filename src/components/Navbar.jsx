@@ -1,7 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+    const [search, setSearch] = useState()
+    const navigate = useNavigate()
+    const readValue = (e)=>{
+        e.preventDefault();
+        navigate(`/home?search=${search}`)
+    }
     return (
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -22,8 +28,8 @@ const Navbar = () => {
                                 <Link class="nav-link" to="/logout">Logout</Link>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <form class="d-flex" role="search" onSubmit={readValue}>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
